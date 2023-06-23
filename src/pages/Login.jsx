@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginProvider';
 import { drawCards } from '../utilities/fetchApi';
@@ -35,6 +34,7 @@ function Login() {
   const handleClickLogin = async () => {
     const deck = await drawCards();
     setDeck(deck);
+    console.log(login.name);
     navigate('/game');
   };
 
@@ -73,11 +73,5 @@ function Login() {
     </div>
   );
 }
-
-Login.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }),
-};
 
 export default Login;

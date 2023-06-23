@@ -5,11 +5,12 @@ import App from './App';
 import './index.css';
 import LoginProvider from './context/LoginProvider';
 
-ReactDOM.createRoot(document.getElementById('root'))
-  .render(
-    <BrowserRouter>
-      <LoginProvider>
-        <App />
-      </LoginProvider>
-    </BrowserRouter>,
-  );
+const rootElement = document.getElementById('root');
+
+ReactDOM.createRoot(rootElement).render(
+  <BrowserRouter>
+    <LoginProvider>
+      <App />
+    </LoginProvider>
+  </BrowserRouter>,
+);

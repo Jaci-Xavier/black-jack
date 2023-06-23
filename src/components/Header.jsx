@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { LoginContext } from '../context/LoginProvider';
 
 function Header() {
+  const { login } = useContext(LoginContext);
+
   return (
-    <div>Header</div>
+    <div>{`Bem vindo ${login.email} !!`}</div>
   );
 }
 
