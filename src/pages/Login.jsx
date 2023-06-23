@@ -1,8 +1,19 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginProvider';
+import { drawCards } from '../utilities/fetchApi';
 
 function Login() {
-  const { login, setLogin, isDisabled, setIsDisabled } = useContext(LoginContext);
+  const {
+    login,
+    setLogin,
+    isDisabled,
+    setIsDisabled,
+    setDeck,
+  } = useContext(LoginContext);
+
+  const navigate = useNavigate();
 
   const validateLogin = () => {
     const { email, password } = login;
@@ -19,6 +30,12 @@ function Login() {
     const { name, value } = target;
     setLogin({ ...login, [name]: value });
     validateLogin();
+  };
+
+  const handleClickLogin = async () => {
+    const deck = await drawCards();
+    setDeck(deck);
+    navigate('/game');
   };
 
   return (
@@ -45,8 +62,9 @@ function Login() {
           />
         </label>
         <button
-          type="submit"
+          type="button"
           disabled={ isDisabled }
+          onClick={ handleClickLogin }
         >
           Login
 
@@ -55,5 +73,11 @@ function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+};
 
 export default Login;

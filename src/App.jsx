@@ -1,11 +1,13 @@
 import 'tailwindcss/tailwind.css';
 import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
+import Game from './pages/Game';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={ <Login /> } />
+      <Route exact path="/" element={ <Login /> } />
+      <Route exact path="/game" element={ <Game /> } />
     </Routes>
   );
 }
