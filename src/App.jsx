@@ -1,12 +1,12 @@
 import 'tailwindcss/tailwind.css';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={ Login } />
-    </Switch>
+    <Routes>
+      <Route path="/" element={ <Login /> } />
+    </Routes>
   );
 }
 
