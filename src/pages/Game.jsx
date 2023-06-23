@@ -33,6 +33,12 @@ function Game() {
     setPlayerCards(player);
   };
 
+  const stand = () => {
+    const computer = shuffledDeck.slice(0, 1);
+    setShuffledDeck(shuffledDeck.slice(1));
+    setComputerCards(computer);
+  };
+
   const playGame = () => {
     initialPlayerCards();
     initialComputerCards();
@@ -45,6 +51,7 @@ function Game() {
         <button type="button" onClick={ () => shuffleDeck() }>Embaralhar</button>
         <button type="button" onClick={ () => playGame() }>Jogar</button>
         <button type="button" onClick={ () => hitCardForPlayer() }>Comprar</button>
+        <button type="button" onClick={ () => stand() }>Finalizar Jogada</button>
       </section>
     </div>
   );
