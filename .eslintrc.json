@@ -1,0 +1,6 @@
+{
+  "extends": ["@trybe/eslint-config-frontend"],
+  "rules": {
+    "react/jsx-no-constructed-context-values": 0
+  }
+}
