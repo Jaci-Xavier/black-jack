@@ -1,12 +1,11 @@
-import { createContext, useMemo } from 'react';
+import React, { createContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const GameContext = createContext();
 
 function GameProvider({ children }) {
-  const obj = { wins: 0, losses: 0 };
-  const [wins, setWins] = useState(obj.wins);
-  const [losses, setLosses] = useState(obj.losses);
+  const [wins, setWins] = useState(0);
+  const [losses, setLosses] = useState(0);
 
   const values = useMemo(() => ({
     wins,
