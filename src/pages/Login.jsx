@@ -34,7 +34,6 @@ function Login() {
   const handleClickLogin = async () => {
     const deck = await drawCards();
     setDeck(deck);
-    console.log(login.name);
     navigate('/game');
   };
 

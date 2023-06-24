@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Header from '../components/Header';
 import { LoginContext } from '../context/LoginProvider';
 import { GameContext } from '../context/GameProvider';
+import hiddenCard from '../images/cardsBase.png';
 
 function Game() {
   const { deck } = useContext(LoginContext);
-  const { wins, setWins, losses, setLosses } = useContext(GameContext);
+  const { setWins, setLosses } = useContext(GameContext);
   const [shuffledDeck, setShuffledDeck] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
   const [computerCards, setComputerCards] = useState([]);
@@ -17,22 +18,9 @@ function Game() {
     setShuffledDeck(deckCopy);
   };
 
-  const initialPlayerCards = () => {
-    const player = shuffledDeck.slice(0, 2);
-    setShuffledDeck(shuffledDeck.slice(2));
-    setPlayerCards(player);
-  };
-
-  const initialComputerCards = () => {
-    const computer = shuffledDeck.slice(0, 2);
-    setShuffledDeck(shuffledDeck.slice(2));
-    setComputerCards(computer);
-  };
-
   const hitCardForPlayer = () => {
-    const player = shuffledDeck.slice(0, 1);
-    setShuffledDeck(shuffledDeck.slice(1));
-    setPlayerCards(player);
+    const player = shuffledDeck.shift();
+    setPlayerCards((prevPlayerCards) => [...prevPlayerCards, player]);
   };
 
   const checkWinner = () => {
@@ -54,9 +42,9 @@ function Game() {
     }
 
     if (result === 'Player') {
-      setWins(wins + 1);
+      setWins((prevWins) => prevWins + 1);
     } else if (result === 'Computer') {
-      setLosses(losses + 1);
+      setLosses((prevLosses) => prevLosses + 1);
     }
 
     console.log(`The winner is ${result}`);
@@ -66,14 +54,47 @@ function Game() {
   const stand = () => {
     const computer = shuffledDeck.slice(0, 1);
     setShuffledDeck(shuffledDeck.slice(1));
-    setComputerCards(computer);
+    setComputerCards((prevComputerCards) => [...prevComputerCards, ...computer]);
     checkWinner();
   };
 
-  const playGame = () => {
-    initialPlayerCards();
-    initialComputerCards();
+  const modifyCardValues = () => {
+    const modifiedDeck = deck.map((card) => {
+      if (card.value === 'king' || card.value === 'queen' || card.value === 'jack') {
+        return { ...card, value: 10 };
+      } if (card.value === 'ace') {
+        return { ...card, value: 11 };
+      }
+      return card;
+    });
+
+    setShuffledDeck(modifiedDeck);
   };
+
+  const playGame = () => {
+    modifyCardValues();
+    shuffleDeck();
+    console.log('Jogo iniciado');
+  };
+
+  useEffect(() => {
+    const initialPlayerCards = () => {
+      const player = shuffledDeck.splice(0, 2);
+      setPlayerCards(player);
+      console.log('Cartas do jogador', player);
+    };
+
+    const initialComputerCards = () => {
+      const computer = shuffledDeck.splice(0, 2);
+      setComputerCards(computer);
+      console.log('Cartas do computador', computer);
+    };
+
+    if (shuffledDeck.length > 0) {
+      initialPlayerCards();
+      initialComputerCards();
+    }
+  }, [shuffledDeck]);
 
   return (
     <div>
@@ -92,7 +113,9 @@ function Game() {
           {computerCards.map((card, index) => (
             <div key={ index }>
               {index === 0 ? (
-                <div>Carta Oculta</div>
+                <div>
+                  <img src={ hiddenCard } alt="Carta do Computador" />
+                </div>
               ) : (
                 <div>
                   <img src={ card.image } alt="Carta do Computador" />
@@ -101,7 +124,6 @@ function Game() {
             </div>
           ))}
         </div>
-        <button type="button" onClick={ () => shuffleDeck() }>Embaralhar</button>
         <button type="button" onClick={ () => playGame() }>Jogar</button>
         <button type="button" onClick={ () => hitCardForPlayer() }>Comprar</button>
         <button type="button" onClick={ () => stand() }>Finalizar Jogada</button>
