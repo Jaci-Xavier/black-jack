@@ -33,6 +33,16 @@ function Game() {
     setPlayerCards(player);
   };
 
+  // const checkWinner = () => {
+  //   const playerScore = playerCards.reduce((acc, curr) => acc + curr.value, 0);
+  //   const computerScore = computerCards.reduce((acc, curr) => acc + curr.value, 0);
+  //   if (playerScore > 21) return 'Computer';
+  //   if (computerScore > 21) return 'Player';
+  //   if (playerScore > computerScore) return 'Player';
+  //   if (computerScore > playerScore) return 'Computer';
+  //   return 'Draw';
+  // };
+
   const stand = () => {
     const computer = shuffledDeck.slice(0, 1);
     setShuffledDeck(shuffledDeck.slice(1));
