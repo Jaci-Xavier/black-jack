@@ -35,20 +35,39 @@ function Game() {
     setPlayerCards(player);
   };
 
-  // const checkWinner = () => {
-  //   const playerScore = playerCards.reduce((acc, curr) => acc + curr.value, 0);
-  //   const computerScore = computerCards.reduce((acc, curr) => acc + curr.value, 0);
-  //   if (playerScore > 21) return 'Computer';
-  //   if (computerScore > 21) return 'Player';
-  //   if (playerScore > computerScore) return 'Player';
-  //   if (computerScore > playerScore) return 'Computer';
-  //   return 'Draw';
-  // };
+  const checkWinner = () => {
+    const playerScore = playerCards.reduce((acc, curr) => acc + curr.value, 0);
+    const computerScore = computerCards.reduce((acc, curr) => acc + curr.value, 0);
+    const magicNumber = 21;
+
+    let result;
+    if (playerScore > magicNumber) {
+      result = 'Computer';
+    } else if (computerScore > magicNumber) {
+      result = 'Player';
+    } else if (playerScore > computerScore) {
+      result = 'Player';
+    } else if (computerScore > playerScore) {
+      result = 'Computer';
+    } else {
+      result = 'Draw';
+    }
+
+    if (result === 'Player') {
+      setWins(wins + 1);
+    } else if (result === 'Computer') {
+      setLosses(losses + 1);
+    }
+
+    console.log(`The winner is ${result}`);
+    return result;
+  };
 
   const stand = () => {
     const computer = shuffledDeck.slice(0, 1);
     setShuffledDeck(shuffledDeck.slice(1));
     setComputerCards(computer);
+    checkWinner();
   };
 
   const playGame = () => {
