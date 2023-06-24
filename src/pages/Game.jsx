@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import Header from '../components/Header';
 import { LoginContext } from '../context/LoginProvider';
+import { GameContext } from '../context/GameProvider';
 
 function Game() {
   const { deck } = useContext(LoginContext);
+  const { wins, setWins, losses, setLosses } = useContext(GameContext);
   const [shuffledDeck, setShuffledDeck] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
   const [computerCards, setComputerCards] = useState([]);
@@ -58,6 +60,21 @@ function Game() {
     <div>
       <Header />
       <section>
+        <div>
+          {computerCards.map((card, index) => (
+            <div key={ index }>
+              {index === 0 ? (
+                <div>Carta Oculta</div>
+              ) : (
+                <div>
+                  Valor da Carta:
+                  {' '}
+                  {card.value}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
         <button type="button" onClick={ () => shuffleDeck() }>Embaralhar</button>
         <button type="button" onClick={ () => playGame() }>Jogar</button>
         <button type="button" onClick={ () => hitCardForPlayer() }>Comprar</button>
