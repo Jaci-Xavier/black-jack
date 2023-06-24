@@ -80,15 +80,22 @@ function Game() {
       <Header />
       <section>
         <div>
+          {playerCards.map((card, index) => (
+            <div key={ index }>
+              <div>
+                <img src={ card.image } alt="Carta do Jogador" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div>
           {computerCards.map((card, index) => (
             <div key={ index }>
               {index === 0 ? (
                 <div>Carta Oculta</div>
               ) : (
                 <div>
-                  Valor da Carta:
-                  {' '}
-                  {card.value}
+                  <img src={ card.image } alt="Carta do Computador" />
                 </div>
               )}
             </div>
