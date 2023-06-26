@@ -185,9 +185,22 @@ function Game() {
             </div>
           ))}
         </div>
-        <button type="button" onClick={ () => playGame() }>Jogar</button>
-        <button type="button" onClick={ () => hitCardForPlayer() }>Comprar</button>
-        <button type="button" onClick={ () => stand() }>Finalizar Jogada</button>
+        <button type="button" onClick={ () => playGame() } disabled={ gameStarted }>
+          Jogar
+        </button>
+
+        <button
+          type="button"
+          onClick={ () => hitCardForPlayer() }
+          disabled={ !gameStarted }
+        >
+          Comprar
+        </button>
+
+        <button type="button" onClick={ () => stand() } disabled={ !gameStarted }>
+          Finalizar Jogada
+        </button>
+
       </section>
     </div>
   );
