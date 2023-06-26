@@ -43,28 +43,28 @@ function Game() {
     });
   };
 
-  const sumCards = (player, computer) => {
-    const modifiedPlayerCards = player.map((card) => {
-      if (card.value === 'king' || card.value === 'queen' || card.value === 'jack') {
-        return { ...card, value: 10 };
-      } if (card.value === 'ace') {
-        return { ...card, value: 11 };
+  const mapAndConvertValues = (cards) => {
+    return cards.map((card) => {
+      const value = parseInt(card.value, 10);
+      if (Number.isNaN(value)) {
+        if (card.value.toUpperCase() === 'KING'
+            || card.value.toUpperCase() === 'QUEEN'
+            || card.value.toUpperCase() === 'JACK') {
+          return { ...card, value: 10 };
+        } if (card.value.toUpperCase() === 'ACE') {
+          return { ...card, value: 11 };
+        }
       }
-      return card;
+      return { ...card, value };
     });
+  };
 
-    const modifiedComputerCards = computer.map((card) => {
-      if (card.value === 'king' || card.value === 'queen' || card.value === 'jack') {
-        return { ...card, value: 10 };
-      } if (card.value === 'ace') {
-        return { ...card, value: 11 };
-      }
-      return card;
-    });
+  const sumCards = (player, computer) => {
+    const modifiedPlayerCards = mapAndConvertValues(player);
+    const modifiedComputerCards = mapAndConvertValues(computer);
 
     const pS = modifiedPlayerCards.reduce((acc, curr) => acc + curr.value, 0);
-    const cs = modifiedComputerCards
-      .reduce((acc, curr) => acc + curr.value, 0);
+    const cs = modifiedComputerCards.reduce((acc, curr) => acc + curr.value, 0);
 
     setPlayerScore(pS);
     setComputerScore(cs);
@@ -110,8 +110,10 @@ function Game() {
       return 'Computer';
     }
 
-    console.log('Draw');
-    return 'Draw';
+    if (playerScore === computerScore) {
+      console.log('Draw');
+      return 'Draw';
+    }
   };
 
   const playGame = () => {
@@ -134,6 +136,24 @@ function Game() {
       const computer = shuffledDeck.splice(0, 2);
       setComputerCards(computer);
       console.log('Cartas do computador', computer);
+
+      sumCards(player, computer);
+
+      checkWinner();
+    }
+  }, [shuffledDeck, gameStarted]);
+
+  useEffect(() => {
+    if (shuffledDeck.length > 0 && gameStarted) {
+      const player = shuffledDeck.splice(0, 2);
+      setPlayerCards(player);
+      console.log('Cartas do jogador', player);
+
+      const computer = shuffledDeck.splice(0, 2);
+      setComputerCards(computer);
+      console.log('Cartas do computador', computer);
+
+      sumCards(player, computer);
     }
   }, [shuffledDeck, gameStarted]);
 
