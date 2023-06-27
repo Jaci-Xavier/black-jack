@@ -1,16 +1,27 @@
-import React from 'react';
-import LoginProvider from '../context/LoginProvider';
-import '../images/sun.svg';
-import '../images/moon.svg';
+import React, { useContext } from 'react';
+import { LoginContext } from '../context/LoginProvider';
+import sun from '../images/sun.svg';
+import moon from '../images/moon.svg';
+import '../App.css';
 
 function DarkMode() {
-  const { isDarkMode, setIsDarkMode } = useContext(LoginProvider);
-  const handleDarkMode = () => setIsDarkMode(!isDarkMode);
+  const { isDarkMode, setIsDarkMode } = useContext(LoginContext);
+
+  const handleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
     <div>
-      <button onClick={ handleDarkMode }>
-        <img src="" alt="" />
+      <h1>Black Jack</h1>
+      <button
+        onClick={ handleDarkMode }
+      >
+        <img
+          src={ isDarkMode ? moon : sun }
+          alt="Theme Icon"
+          className="dark-mode-icon"
+        />
       </button>
     </div>
   );

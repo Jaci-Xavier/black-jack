@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginProvider';
 import { drawCards } from '../utilities/fetchApi';
 import '../App.css';
+import DarkMode from '../components/DarkMode';
 
 function Login() {
   const {
@@ -40,6 +41,7 @@ function Login() {
 
   return (
     <div>
+      <DarkMode />
       <form className="bg-red-500">
         <label htmlFor="email">
           Email:
