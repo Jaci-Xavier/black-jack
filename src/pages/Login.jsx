@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginProvider';
 import { drawCards } from '../utilities/fetchApi';
+import '../App.css';
 
 function Login() {
   const {
@@ -39,7 +40,7 @@ function Login() {
 
   return (
     <div>
-      <form>
+      <form className="bg-red-500">
         <label htmlFor="email">
           Email:
           <input
