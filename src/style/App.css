@@ -83,28 +83,66 @@ body:not(.dark-mode) {
   margin: 0 5px;
 }
 
-body {
-  background-color: #fff;
-  color: #333;
+.title {
+  margin-top: 100px;
 }
 
-body.dark-mode {
-  background-color: #333;
+.title h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 6rem;
+  height: 500px;
+}
+
+.login-container label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.login-container input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #326842;
   color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.login-button:hover {
+  background-color: #2c563e;
 }
 
+@media screen and (max-width: 768px) {
+  .login-container input {
+    width: 100%;
+  }
+}

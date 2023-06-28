@@ -45,31 +45,41 @@ function Login() {
   return (
     <div>
       <DarkMode />
-      <form className="bg-red-500">
-        <label htmlFor="email">
-          Email:
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-            onChange={ (event) => handleChange(event) }
-          />
-        </label>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            onChange={ (event) => handleChange(event) }
-          />
-        </label>
-        <button type="button" disabled={ isDisabled } onClick={ handleClickLogin }>
-          Login
-        </button>
-      </form>
+      <div className="box">
+        <div className="title">
+          <h1>Black Jack</h1>
+        </div>
+        <form className="login-container">
+          <label htmlFor="email">
+            Email:
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              onChange={ (event) => handleChange(event) }
+            />
+          </label>
+          <label htmlFor="password">
+            Password:
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              onChange={ (event) => handleChange(event) }
+            />
+          </label>
+          <button
+            type="button"
+            disabled={ isDisabled }
+            onClick={ handleClickLogin }
+            className="login-button"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
