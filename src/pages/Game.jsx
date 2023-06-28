@@ -5,7 +5,7 @@ import { GameContext } from '../context/GameProvider';
 import hiddenCard from '../images/cardsBase.png';
 
 function Game() {
-  const { deck } = useContext(LoginContext);
+  const { deck, isDarkMode } = useContext(LoginContext);
   const { setWins, setLosses } = useContext(GameContext);
   const [shuffledDeck, setShuffledDeck] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
@@ -141,7 +141,12 @@ function Game() {
 
       checkWinner();
     }
-  }, [shuffledDeck, gameStarted]);
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [shuffledDeck, gameStarted, isDarkMode]);
 
   useEffect(() => {
     if (shuffledDeck.length > 0 && gameStarted) {

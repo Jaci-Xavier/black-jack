@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { LoginContext } from '../context/LoginProvider';
 import { GameContext } from '../context/GameProvider';
+import DarkMode from './DarkMode';
 
 function Header() {
   const { login } = useContext(LoginContext);
@@ -9,6 +10,7 @@ function Header() {
 
   return (
     <section>
+      <DarkMode />
       <div>{`Bem vindo ${userName}!`}</div>
       <div>{`Vitórias: ${wins}`}</div>
       <div>{`Derrotas: ${losses}`}</div>

@@ -11,10 +11,27 @@
   text-align: center;
 }
 
+#dark-mode-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
 .dark-mode-icon {
   cursor: pointer;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
 }
 
 @keyframes logo-spin {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { LoginContext } from '../context/LoginProvider';
 import sun from '../images/sun.svg';
 import moon from '../images/moon.svg';
-import '../App.css';
+import '../style/App.css';
 
 function DarkMode() {
   const { isDarkMode, setIsDarkMode } = useContext(LoginContext);
@@ -12,13 +12,12 @@ function DarkMode() {
   };
 
   return (
-    <div>
-      <h1>Black Jack</h1>
+    <div id="dark-mode-container">
       <button
         onClick={ handleDarkMode }
       >
         <img
-          src={ isDarkMode ? moon : sun }
+          src={ isDarkMode ? sun : moon }
           alt="Theme Icon"
           className="dark-mode-icon"
         />

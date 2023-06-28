@@ -1,20 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginProvider';
 import { drawCards } from '../utilities/fetchApi';
-import '../App.css';
+import '../style/App.css';
 import DarkMode from '../components/DarkMode';
 
 function Login() {
-  const {
-    login,
-    setLogin,
-    isDisabled,
-    setIsDisabled,
-    setDeck,
-  } = useContext(LoginContext);
+  const { login,
+    setLogin, isDisabled, setIsDisabled, setDeck, isDarkMode } = useContext(LoginContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
 
   const validateLogin = () => {
     const { email, password } = login;
@@ -63,13 +66,8 @@ function Login() {
             onChange={ (event) => handleChange(event) }
           />
         </label>
-        <button
-          type="button"
-          disabled={ isDisabled }
-          onClick={ handleClickLogin }
-        >
+        <button type="button" disabled={ isDisabled } onClick={ handleClickLogin }>
           Login
-
         </button>
       </form>
     </div>
