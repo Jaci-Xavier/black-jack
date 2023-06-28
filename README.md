@@ -6,7 +6,7 @@ Este é um projeto de Blackjack desenvolvido com React. É um jogo de cartas ond
 
 - Distribuição de cartas para o jogador e o dealer.
 - Cálculo automático da pontuação do jogador e do dealer.
-- Possibilidade de fazer jogadas, como "hit" (pedir mais uma carta) e "stand" (parar de receber cartas).
+- Possibilidade de fazer jogadas, como "hit" (comprar carta) e "stand" (finalizar jogada).
 - Verificação automática do resultado da partida (vitória, derrota ou empate).
 - Opção de reiniciar o jogo para jogar novamente.
 
