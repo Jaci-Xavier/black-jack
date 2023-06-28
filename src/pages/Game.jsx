@@ -172,32 +172,33 @@ function Game() {
   return (
     <div>
       <Header />
-      <section>
-        <div>
-          <h1>Player</h1>
+      <section className="game-section">
+        <h1>Player</h1>
+        <div className="card-container">
           {playerCards.map((card, index) => (
-            <div key={ index }>
-              <div>
-                <img src={ card.image } alt="Carta do Jogador" />
-              </div>
+            <div key={ index } className="card-wrapper">
+              <img src={ card.image } alt="Carta do Jogador" className="card" />
             </div>
           ))}
         </div>
-        <div>
-          <h1>Computador</h1>
+        <h1>Computador</h1>
+        <div className="card-container">
           {computerCards.map((card, index) => (
-            <div key={ index }>
-              <div>
-                {index === 0 && gameStarted ? (
-                  <img src={ hiddenCard } alt="Carta do Computador" />
-                ) : (
-                  <img src={ card.image } alt="Carta do Computador" />
-                )}
-              </div>
+            <div key={ index } className="card-wrapper">
+              {index === 0 && gameStarted ? (
+                <img src={ hiddenCard } alt="Carta do Computador" className="card" />
+              ) : (
+                <img src={ card.image } alt="Carta do Computador" className="card" />
+              )}
             </div>
           ))}
         </div>
-        <button type="button" onClick={ () => playGame() } disabled={ gameStarted }>
+        <button
+          type="button"
+          onClick={ () => playGame() }
+          disabled={ gameStarted }
+          className="game-button"
+        >
           Jogar
         </button>
 
@@ -205,14 +206,19 @@ function Game() {
           type="button"
           onClick={ () => hitCardForPlayer() }
           disabled={ !gameStarted }
+          className="game-button"
         >
           Comprar
         </button>
 
-        <button type="button" onClick={ () => stand() } disabled={ !gameStarted }>
+        <button
+          type="button"
+          onClick={ () => stand() }
+          disabled={ !gameStarted }
+          className="game-button"
+        >
           Finalizar Jogada
         </button>
-
       </section>
     </div>
   );

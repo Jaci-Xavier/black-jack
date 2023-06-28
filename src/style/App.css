@@ -1,7 +1,20 @@
+body:not(.dark-mode) {
+  background-image: url('../images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  height: 100vh;
+}
+
 
 .dark-mode {
-  background-color: #333;
+  background-image: url('../images/black-2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
+  height: 100vh;
 }
 
 #root {
@@ -22,6 +35,52 @@
   cursor: pointer;
   width: 20px;
   height: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.game-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.dark-mode-icon:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+.game-button:hover {
+  cursor: pointer;
+  background-color: #326842;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.game-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.card-wrapper {
+  margin: 0 5px;
 }
 
 body {
