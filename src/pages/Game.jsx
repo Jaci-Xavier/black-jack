@@ -138,14 +138,21 @@ function Game() {
       const computer = shuffledDeck.splice(0, 2);
       setComputerCards(computer);
       console.log('Cartas do computador', computer);
+
+      sumCards(player, computer);
+      addCardToComputer(); // Chamar a função addCardToComputer() aqui
+      console.log(computerCards);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shuffledDeck, gameStarted]);
+
+  useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shuffledDeck, gameStarted, isDarkMode]);
+  }, [isDarkMode]);
 
   useEffect(() => {
     if (shuffledDeck.length > 0 && gameStarted) {
