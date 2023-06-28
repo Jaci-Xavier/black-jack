@@ -123,8 +123,10 @@ function Game() {
   };
 
   const stand = () => {
-    setGameStarted(false);
-    checkWinner();
+    if (gameStarted) {
+      setGameStarted(false);
+      checkWinner();
+    }
   };
 
   useEffect(() => {
@@ -136,16 +138,13 @@ function Game() {
       const computer = shuffledDeck.splice(0, 2);
       setComputerCards(computer);
       console.log('Cartas do computador', computer);
-
-      sumCards(player, computer);
-
-      checkWinner();
     }
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shuffledDeck, gameStarted, isDarkMode]);
 
   useEffect(() => {
@@ -160,6 +159,7 @@ function Game() {
 
       sumCards(player, computer);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shuffledDeck, gameStarted]);
 
   return (
