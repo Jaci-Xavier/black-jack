@@ -18,5 +18,4 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 - React: Biblioteca JavaScript para construir interfaces de usuário.
 - React Hooks: Recursos do React para trabalhar com estado e ciclo de vida.
-- Tailwind CSS: Framework CSS utilitário para estilizar a interface do usuário.
 - Deck of Cards API: API utilizada para a distribuição das cartas do jogo.

@@ -8,6 +8,7 @@ function LoginProvider({ children }) {
   const [login, setLogin] = useState(obj);
   const [isDisabled, setIsDisabled] = useState(true);
   const [deck, setDeck] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const values = useMemo(() => ({
     login,
@@ -16,7 +17,10 @@ function LoginProvider({ children }) {
     setIsDisabled,
     deck,
     setDeck,
-  }), [login, setLogin, isDisabled, setIsDisabled, deck, setDeck]);
+    isDarkMode,
+    setIsDarkMode,
+  }), [login, setLogin, isDisabled, setIsDisabled,
+    deck, setDeck, isDarkMode, setIsDarkMode]);
 
   return (
     <LoginContext.Provider value={ values }>
