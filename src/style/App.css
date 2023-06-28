@@ -146,3 +146,63 @@ body:not(.dark-mode) {
     width: 100%;
   }
 }
+
+.footer {
+  position: fixed;
+  background-color: #1f5537;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.footer h4 {
+  margin-right: 10px;
+}
+
+.link-icon {
+  margin: 0 5px;
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+}
+
+.link-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.link-icon:hover {
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .login-container input {
+    width: 100%;
+  }
+
+  .link-icon {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-container {
+    margin-top: 20px;
+  }
+
+  .footer {
+    padding: 10px;
+  }
+
+  .footer h4 {
+    font-size: 14px;
+  }
+
+  .link-icon {
+    margin-top: 3px;
+  }
+}

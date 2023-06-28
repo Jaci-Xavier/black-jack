@@ -4,6 +4,7 @@ import { LoginContext } from '../context/LoginProvider';
 import { drawCards } from '../utilities/fetchApi';
 import '../style/App.css';
 import DarkMode from '../components/DarkMode';
+import Footer from '../components/Footer';
 
 function Login() {
   const { login,
@@ -80,6 +81,7 @@ function Login() {
           </button>
         </form>
       </div>
+      <Footer />
     </div>
   );
 }

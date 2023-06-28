@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { LoginContext } from '../context/LoginProvider';
 import { GameContext } from '../context/GameProvider';
 import hiddenCard from '../images/cardsBase.png';
+import Footer from '../components/Footer';
 
 function Game() {
   const { deck, isDarkMode } = useContext(LoginContext);
@@ -36,9 +37,7 @@ function Game() {
     const player = shuffledDeck.shift();
     setPlayerCards((prevPlayerCards) => {
       const newPlayerCards = [...prevPlayerCards, player];
-      console.log(newPlayerCards);
       addCardToComputer();
-      console.log(computerCards);
       return newPlayerCards;
     });
   };
@@ -75,43 +74,36 @@ function Game() {
     sumCards(playerCards, computerCards);
 
     if (playerScore > magicNumber) {
-      console.log('Player busts');
       setLosses((prevLosses) => prevLosses + 1);
       return 'Computer';
     }
 
     if (computerScore > magicNumber) {
-      console.log('Computer busts');
       setWins((prevWins) => prevWins + 1);
       return 'Player';
     }
 
     if (playerCards.length === 2 && playerScore === magicNumber) {
-      console.log('Player has Blackjack');
       setWins((prevWins) => prevWins + 1);
       return 'Player';
     }
 
     if (computerCards.length === 2 && computerScore === magicNumber) {
-      console.log('Computer has Blackjack');
       setLosses((prevLosses) => prevLosses + 1);
       return 'Computer';
     }
 
     if (playerScore > computerScore) {
-      console.log('Player wins');
       setWins((prevWins) => prevWins + 1);
       return 'Player';
     }
 
     if (computerScore > playerScore) {
-      console.log('Computer wins');
       setLosses((prevLosses) => prevLosses + 1);
       return 'Computer';
     }
 
     if (playerScore === computerScore) {
-      console.log('Draw');
       return 'Draw';
     }
   };
@@ -119,7 +111,6 @@ function Game() {
   const playGame = () => {
     setShuffledDeck(shuffleDeck(deck));
     setGameStarted(true);
-    console.log('Jogo iniciado');
   };
 
   const stand = () => {
@@ -133,16 +124,14 @@ function Game() {
     if (shuffledDeck.length > 0 && gameStarted) {
       const player = shuffledDeck.splice(0, 2);
       setPlayerCards(player);
-      console.log('Cartas do jogador', player);
 
       const computer = shuffledDeck.splice(0, 2);
       setComputerCards(computer);
-      console.log('Cartas do computador', computer);
 
       sumCards(player, computer);
-      addCardToComputer(); // Chamar a função addCardToComputer() aqui
-      console.log(computerCards);
+      addCardToComputer();
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shuffledDeck, gameStarted]);
 
@@ -158,11 +147,9 @@ function Game() {
     if (shuffledDeck.length > 0 && gameStarted) {
       const player = shuffledDeck.splice(0, 2);
       setPlayerCards(player);
-      console.log('Cartas do jogador', player);
 
       const computer = shuffledDeck.splice(0, 2);
       setComputerCards(computer);
-      console.log('Cartas do computador', computer);
 
       sumCards(player, computer);
     }
@@ -220,6 +207,7 @@ function Game() {
           Finalizar Jogada
         </button>
       </section>
+      <Footer />
     </div>
   );
 }
