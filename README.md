@@ -9,6 +9,64 @@ Este é um projeto de Blackjack desenvolvido com React. É um jogo de cartas ond
 - Possibilidade de fazer jogadas, como "hit" (comprar carta) e "stand" (finalizar jogada).
 - Verificação automática do resultado da partida (vitória, derrota ou empate).
 - Opção de reiniciar o jogo para jogar novamente.
+- Verifica o tema do navegador do usuario e seta como tema inicial padrão da aplicação.
+
+## Tecnologias Utilizadas
+
+- React
+- React DOM
+- React Router DOM
+- Vite
+- Hooks
+- Consumo da API [Deck of Cards](https://deckofcardsapi.com/)
+
+## Requisitos de Instalação
+
+- Node.js
+- npm (Node Package Manager)
+
+Certifique-se de ter o Node.js e o npm instalados em seu sistema antes de prosseguir.
+
+## Instruções de Instalação
+
+1. Clone este repositório em sua máquina local.
+
+`git clone git@github.com:Jaci-Xavier/black-jack.git`
+
+
+2. Navegue até o diretório do projeto.
+
+`cd black-jack`
+
+
+3. Instale as dependências do projeto usando o npm.
+
+`npm install`
+
+
+## Instruções de Execução
+
+1. Após a conclusão da instalação, execute o seguinte comando para iniciar o projeto.
+
+`npm run dev`
+
+
+2. O jogo Blackjack será executado localmente no seu navegador.
+
+## Outras Informações
+
+- Certifique-se de que a porta necessária (porta 3000) está disponível em seu sistema.
+
+
+Divirta-se jogando Blackjack!
+
+
+
+
+
+
+
+
 
 ## Tecnologias Utilizadas
 
