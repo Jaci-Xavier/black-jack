@@ -46,9 +46,7 @@ function Game() {
     return cards.map((card) => {
       const value = parseInt(card.value, 10);
       if (Number.isNaN(value)) {
-        if (card.value.toUpperCase() === 'KING'
-            || card.value.toUpperCase() === 'QUEEN'
-            || card.value.toUpperCase() === 'JACK') {
+        if (['KING', 'QUEEN', 'JACK'].includes(card.value.toUpperCase())) {
           return { ...card, value: 10 };
         } if (card.value.toUpperCase() === 'ACE') {
           return { ...card, value: 11 };
